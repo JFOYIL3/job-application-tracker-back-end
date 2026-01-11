@@ -9,7 +9,9 @@ class JobApplicationListView(APIView):
         job_applications = []
         collection = db.collection('job_applications').get()
         for doc in collection:
-            job_applications.append(doc.to_dict())
+            job_data = doc.to_dict()
+            job_data['id'] = doc.id  # include the id from the document
+            job_applications.append(job_data)
         return JsonResponse({'job_applications': job_applications}, safe=False)
 
 

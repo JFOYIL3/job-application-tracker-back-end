@@ -30,10 +30,48 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+
+]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'OPTIONS',
+    'PUT',
+    'PATCH',
+    'DELETE'
+]
+CORS_ALLOW_HEADERS = [
+    'Authorization',
+    'Content-Type',
+    'X-CSRFToken',
+]
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:5173',
+]
+
+CSRF_TRUSTED_ORIGINS = ['http://localhost:5173',
+                        'https://gpt.clubchat.io',
+                        'https://testgpt.clubchat.io',
+                        'https://demo.clubchat.ai',
+                        'https://us-east-1jyxd58vxv.auth.us-east-1.amazoncognito.com']
+CSRF_ALLOWED_ORIGINS = ['http://localhost:5173',
+                        'https://gpt.clubchat.io',
+                        'https://testgpt.clubchat.io',
+                        'https://demo.clubchat.ai',
+                        'https://us-east-1jyxd58vxv.auth.us-east-1.amazoncognito.com']
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +83,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

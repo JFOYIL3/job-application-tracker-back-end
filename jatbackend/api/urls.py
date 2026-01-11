@@ -8,10 +8,10 @@ urlpatterns = [
          name='job-applications'),
     path('job-applications/<str:id>', job_application_view.JobApplicationDetailView.as_view(),
          name='job-application-detail'),
-    path('job-applications', job_application_view.JobApplicationCreateView.as_view(),
+    path('create-job-application', job_application_view.JobApplicationCreateView.as_view(),
          name='job-application-create'),
-    path('job-applications/<str:id>', job_application_view.JobApplicationUpdateView.as_view(),
+    path('update-job-application/<str:id>', job_application_view.JobApplicationUpdateView.as_view(),
          name='job-application-update'),
-    path('job-applications/<str:id>', job_application_view.JobApplicationDeleteView.as_view(),
+    path('delete-job-application/<str:id>', job_application_view.JobApplicationDeleteView.as_view(),
          name='job-application-delete'),
 ]
